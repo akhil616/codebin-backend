@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const pasteRoutes = require("./routes/pasteRoutes");
 const userRoutes = require("./routes/user");
 const myPastesRoutes = require("./routes/myPastesRoutes");
+const PORT = process.env.PORT || 5500;
 
 // express app
 const app = express();
@@ -27,8 +28,8 @@ app.use("/api/user", userRoutes);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log("Connect to db and listening on PORT: ", process.env.PORT);
+    app.listen(PORT, () => {
+      console.log("Connect to db and listening on PORT: ", PORT);
     });
   })
   .catch((err) => {
